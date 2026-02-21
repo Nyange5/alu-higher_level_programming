@@ -2,4 +2,5 @@
 
 str1 = "Holberton"
 str2 = "School"
-print(f"Welcome {str1} {str2}!")
+str1 = "Welcome" + str1 + " " + str2 + "!"
+print(str1)
