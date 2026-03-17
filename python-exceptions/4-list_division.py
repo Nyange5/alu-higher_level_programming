@@ -6,7 +6,8 @@ def list_division(my_list_1, my_list_2, list_length):
         try:
             x = my_list_1[i]
             y = my_list_2[i]
-            if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            if not isinstance(x, (int, float)) or \ 
+                not isinstance(y, (int, float)):
                 raise TypeError
             result = x / y
         except TypeError:
