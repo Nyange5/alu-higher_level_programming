@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """Square Class.
-Module contains a class that defines a square."""
+Module contains a class that defines a square.
+"""
+
 
 class Square:
-    """class that defines a square"""
+    """class that defines a square with validated size"""
 
     def __init__(self, size=0):
-        """Initialize square with size.
+        """Initialize square with optional size.
         Args:
             size: integer representing object size."""
 
@@ -20,7 +22,14 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Setter for size attribute"""
+        """Setter for size attribute
+        Args:
+            value: The size value to set
+
+        Raises:
+            TypeError: If size is not an integer
+            ValueError: If size is less than 0
+            """
         if not isinstance(value, int):
             raise TypeError("size must be integer")
         if value < 0:
@@ -32,7 +41,7 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Shows the square object with # character"""
+        """Shows the square object with # characters"""
         if self.__size == 0:
             print()
         else:
