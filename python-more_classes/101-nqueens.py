@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def is_safe(board, row, col):
     for i in range(row):
         if board[i] == col:
@@ -9,15 +10,17 @@ def is_safe(board, row, col):
             return False
     return True
 
+
 def solve(board, row, n):
     if row == n:
         print([[i, board[i]] for i in range(n)])
         return
     for col in range(n):
         if is_safe(board, row, col):
-            board[row] = col        # place queen
+            board[row] = col
             solve(board, row + 1, n)
-            board[row] = -1         # backtrack
+            board[row] = -1
+
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
