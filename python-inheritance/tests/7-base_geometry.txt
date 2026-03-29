@@ -1,72 +1,80 @@
-==========================
-Tests for BaseGeometry class
-==========================
+Tests for 7-base_geometry module
 
-Import:
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-    >>> bg = BaseGeometry()
+>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+>>> bg = BaseGeometry()
 
-Test area raises Exception:
-    >>> bg.area()
-    Traceback (most recent call last):
-        ...
-    Exception: area() is not implemented
+Valid integers pass silently:
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
 
-Test valid integers:
-    >>> bg.integer_validator("my_int", 12)
-    >>> bg.integer_validator("width", 89)
-    >>> bg.integer_validator("size", 1)
+String raises TypeError:
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
 
-Test string raises TypeError:
-    >>> bg.integer_validator("name", "John")
-    Traceback (most recent call last):
-        ...
-    TypeError: name must be an integer
+Zero raises ValueError:
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
 
-Test zero raises ValueError:
-    >>> bg.integer_validator("age", 0)
-    Traceback (most recent call last):
-        ...
-    ValueError: age must be greater than 0
+Negative raises ValueError:
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+    ...
+ValueError: distance must be greater than 0
 
-Test negative raises ValueError:
-    >>> bg.integer_validator("distance", -4)
-    Traceback (most recent call last):
-        ...
-    ValueError: distance must be greater than 0
+Float raises TypeError:
+>>> bg.integer_validator("width", 3.5)
+Traceback (most recent call last):
+    ...
+TypeError: width must be an integer
 
-Test float raises TypeError:
-    >>> bg.integer_validator("price", 1.5)
-    Traceback (most recent call last):
-        ...
-    TypeError: price must be an integer
+Boolean raises TypeError:
+>>> bg.integer_validator("flag", True)
+Traceback (most recent call last):
+    ...
+TypeError: flag must be an integer
 
-Test bool raises TypeError:
-    >>> bg.integer_validator("flag", True)
-    Traceback (most recent call last):
-        ...
-    TypeError: flag must be an integer
+None raises TypeError:
+>>> bg.integer_validator("name", None)
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
 
-Test None raises TypeError:
-    >>> bg.integer_validator("val", None)
-    Traceback (most recent call last):
-        ...
-    TypeError: val must be an integer
+Tuple raises TypeError:
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
 
-Test list raises TypeError:
-    >>> bg.integer_validator("val", [1])
-    Traceback (most recent call last):
-        ...
-    TypeError: val must be an integer
+List raises TypeError:
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
 
-Test tuple raises TypeError:
-    >>> bg.integer_validator("val", (1,))
-    Traceback (most recent call last):
-        ...
-    TypeError: val must be an integer
+Set raises TypeError:
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
 
-Test dict raises TypeError:
-    >>> bg.integer_validator("val", {})
-    Traceback (most recent call last):
-        ...
-    TypeError: val must be an integer
+Missing both arguments raises TypeError:
+>>> bg.integer_validator()
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Missing value argument raises TypeError:
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+area raises Exception:
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
