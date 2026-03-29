@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Log parsing module"""
+"""Module that reads stdin line by line and computes metrics."""
 import sys
 
 
 def print_stats(total_size, status_codes):
-    """Prints the computed statistics"""
+    """Print accumulated metrics."""
     print("File size: {}".format(total_size))
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
@@ -20,8 +20,8 @@ try:
         parts = line.split()
         try:
             if len(parts) >= 7:
-                code = int(parts[-2])
                 size = int(parts[-1])
+                code = int(parts[-2])
                 total_size += size
                 if code in status_codes:
                     status_codes[code] += 1
