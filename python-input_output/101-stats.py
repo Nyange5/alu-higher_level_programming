@@ -19,10 +19,12 @@ try:
     for line in sys.stdin:
         parts = line.split()
         try:
-            total_size += int(parts[-1])
-            code = int(parts[-2])
-            if code in status_codes:
-                status_codes[code] += 1
+            if len(parts) >= 7:
+                code = int(parts[-2])
+                size = int(parts[-1])
+                total_size += size
+                if code in status_codes:
+                    status_codes[code] += 1
         except (ValueError, IndexError):
             pass
         line_count += 1
