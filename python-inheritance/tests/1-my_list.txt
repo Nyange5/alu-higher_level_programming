@@ -1,0 +1,55 @@
+==========================
+Tests for MyList class
+==========================
+
+Import:
+    >>> MyList = __import__('1-my_list').MyList
+
+Test basic usage:
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+Test original list is unchanged:
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+Test empty list:
+    >>> empty = MyList()
+    >>> empty.print_sorted()
+    []
+
+Test single element:
+    >>> single = MyList()
+    >>> single.append(42)
+    >>> single.print_sorted()
+    [42]
+
+Test negative numbers:
+    >>> neg = MyList()
+    >>> neg.append(-1)
+    >>> neg.append(-5)
+    >>> neg.append(-3)
+    >>> neg.print_sorted()
+    [-5, -3, -1]
+
+Test already sorted:
+    >>> sorted_list = MyList()
+    >>> sorted_list.append(1)
+    >>> sorted_list.append(2)
+    >>> sorted_list.append(3)
+    >>> sorted_list.print_sorted()
+    [1, 2, 3]
+
+Test same numbers:
+    >>> same = MyList()
+    >>> same.append(5)
+    >>> same.append(5)
+    >>> same.append(5)
+    >>> same.print_sorted()
+    [5, 5, 5]
